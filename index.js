@@ -18,12 +18,14 @@ function animate(){
   // ctx.fillRect(0,50,100,100);
   // sx, sy, sw, sh, dx, dy, dw, dh --> this gives the source x-y coordinates and source width and height
   // same goes for the destination --> draw function (image object, sx,sy, sw, sh, dx, dy, dw, dh);
-
-  ctx.drawImage(playerImage, frameX * spriteWidth, frameY * spriteHeight, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
-  if (gameFrame% staggerFrame == 0){
-    if(frameX < 6) frameX = frameX+ 1;
-    else frameX = 0;
-  }
+  let position = Math.floor(gameFrame/staggerFrame)%6;
+  frameX = spriteWidth*position;
+  ctx.drawImage(playerImage, frameX , frameY * spriteHeight, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
+  // you are not able to cycle through
+  // if (gameFrame% staggerFrame == 0){
+  //   if(frameX < 6) frameX = frameX+ 1;
+  //   else frameX = 0;
+  // }
 
 
   gameFrame++;
